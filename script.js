@@ -18,45 +18,48 @@ navLinks.forEach(link => {
 
 });
 
-const heroBtn = document.getElementById("heroBtn");
+const heroButton = document.getElementById("heroBtn");
 
-heroBtn.addEventListener("click", () => {
+heroButton.addEventListener("click", () => {
 
     document
         .getElementById("contact")
         .scrollIntoView({
-
             behavior: "smooth"
-
         });
 
 });
 
-const form = document.getElementById("contactForm");
+const contactForm = document.getElementById("contactForm");
 
 const nameInput = document.getElementById("name");
-
 const emailInput = document.getElementById("email");
-
 const messageInput = document.getElementById("message");
 
 const formMessage = document.getElementById("formMessage");
 
-form.addEventListener("submit", function (event) {
+function clearMessage() {
+
+    formMessage.textContent = "";
+
+}
+
+nameInput.addEventListener("input", clearMessage);
+emailInput.addEventListener("input", clearMessage);
+messageInput.addEventListener("input", clearMessage);
+
+contactForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
     const name = nameInput.value.trim();
-
     const email = emailInput.value.trim();
-
     const message = messageInput.value.trim();
 
     if (name === "" || email === "" || message === "") {
 
         formMessage.textContent = "Please fill in all fields.";
         formMessage.style.color = "red";
-
         return;
 
     }
@@ -65,16 +68,14 @@ form.addEventListener("submit", function (event) {
 
         formMessage.textContent = "Please enter a valid email address.";
         formMessage.style.color = "red";
-
         return;
 
     }
 
     if (message.length < 10) {
 
-        formMessage.textContent = "Message should be at least 10 characters long.";
+        formMessage.textContent = "Message should contain at least 10 characters.";
         formMessage.style.color = "red";
-
         return;
 
     }
@@ -82,6 +83,6 @@ form.addEventListener("submit", function (event) {
     formMessage.textContent = "Message sent successfully!";
     formMessage.style.color = "green";
 
-    form.reset();
+    contactForm.reset();
 
 });
