@@ -1,7 +1,3 @@
-// ============================
-// Smooth Scroll Navigation
-// ============================
-
 const navLinks = document.querySelectorAll("nav a");
 
 navLinks.forEach(link => {
@@ -15,20 +11,12 @@ navLinks.forEach(link => {
         );
 
         targetSection.scrollIntoView({
-
             behavior: "smooth"
-
         });
 
     });
 
 });
-
-
-
-// ============================
-// Hero Button
-// ============================
 
 const heroBtn = document.getElementById("heroBtn");
 
@@ -43,12 +31,6 @@ heroBtn.addEventListener("click", () => {
         });
 
 });
-
-
-
-// ============================
-// Contact Form
-// ============================
 
 const form = document.getElementById("contactForm");
 
@@ -70,24 +52,34 @@ form.addEventListener("submit", function (event) {
 
     const message = messageInput.value.trim();
 
-    if (
-        name === "" ||
-        email === "" ||
-        message === ""
-    ) {
+    if (name === "" || email === "" || message === "") {
 
-        formMessage.textContent =
-            "Please fill in all fields.";
-
+        formMessage.textContent = "Please fill in all fields.";
         formMessage.style.color = "red";
 
         return;
 
     }
 
-    formMessage.textContent =
-        "Message sent successfully!";
+    if (!email.includes("@") || !email.includes(".")) {
 
+        formMessage.textContent = "Please enter a valid email address.";
+        formMessage.style.color = "red";
+
+        return;
+
+    }
+
+    if (message.length < 10) {
+
+        formMessage.textContent = "Message should be at least 10 characters long.";
+        formMessage.style.color = "red";
+
+        return;
+
+    }
+
+    formMessage.textContent = "Message sent successfully!";
     formMessage.style.color = "green";
 
     form.reset();
