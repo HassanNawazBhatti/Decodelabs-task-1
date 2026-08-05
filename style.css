@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f4f8fb;
@@ -15,6 +19,8 @@ header {
     background: #0f172a;
     color: white;
     padding: 18px 8%;
+    position: sticky;
+    top: 0;
 }
 
 nav {
@@ -25,6 +31,7 @@ nav {
 
 .logo {
     font-size: 28px;
+    letter-spacing: 1px;
 }
 
 nav ul {
@@ -36,52 +43,58 @@ nav ul {
 nav a {
     color: white;
     text-decoration: none;
-    transition: .3s;
+    transition: color .3s ease;
 }
 
 nav a:hover {
     color: #38bdf8;
 }
 
+section {
+    scroll-margin-top: 90px;
+}
+
 #home {
     text-align: center;
-    padding: 80px 10%;
+    padding: 100px 10%;
 }
 
 #home h1 {
-    font-size: 48px;
+    font-size: 50px;
     color: #0f172a;
+    margin-bottom: 20px;
 }
 
 #home p {
     width: 70%;
-    margin: 20px auto;
+    margin: auto;
     color: #555;
 }
 
 #home button {
-    margin-top: 15px;
-    padding: 12px 28px;
+    margin-top: 30px;
+    padding: 13px 30px;
     border: none;
     background: #2563eb;
     color: white;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 16px;
     transition: .3s;
 }
 
 #home button:hover {
     background: #1d4ed8;
+    transform: translateY(-3px);
 }
 
 #features {
-    padding: 70px 8%;
+    padding: 80px 8%;
 }
 
 #features h2 {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 45px;
 }
 
 .feature-container {
@@ -91,10 +104,16 @@ nav a:hover {
 
 .feature-container article {
     background: white;
-    padding: 25px;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
     flex: 1;
+    transition: .3s;
+}
+
+.feature-container article:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,.12);
 }
 
 .feature-container h3 {
@@ -103,7 +122,7 @@ nav a:hover {
 }
 
 #about {
-    padding: 70px 10%;
+    padding: 80px 10%;
     text-align: center;
 }
 
@@ -117,7 +136,7 @@ nav a:hover {
 }
 
 #contact {
-    padding: 70px 10%;
+    padding: 80px 10%;
 }
 
 #contact h2 {
@@ -126,7 +145,7 @@ nav a:hover {
 }
 
 form {
-    width: 500px;
+    width: 520px;
     max-width: 100%;
     margin: auto;
     display: flex;
@@ -134,7 +153,8 @@ form {
 }
 
 label {
-    margin-top: 15px;
+    margin-top: 18px;
+    font-weight: bold;
 }
 
 input,
@@ -144,11 +164,19 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    transition: .3s;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 8px rgba(37,99,235,.25);
 }
 
 form button {
-    margin-top: 20px;
-    padding: 12px;
+    margin-top: 22px;
+    padding: 13px;
     border: none;
     background: #2563eb;
     color: white;
@@ -159,6 +187,7 @@ form button {
 
 form button:hover {
     background: #1d4ed8;
+    transform: translateY(-2px);
 }
 
 #formMessage {
@@ -171,11 +200,15 @@ footer {
     background: #0f172a;
     color: white;
     text-align: center;
-    padding: 20px;
-    margin-top: 60px;
+    padding: 25px;
+    margin-top: 80px;
 }
 
 @media (max-width:768px) {
+
+    header {
+        padding: 20px;
+    }
 
     nav {
         flex-direction: column;
@@ -187,12 +220,22 @@ footer {
         text-align: center;
     }
 
+    #home {
+        padding: 70px 20px;
+    }
+
     #home h1 {
         font-size: 34px;
     }
 
     #home p {
         width: 100%;
+    }
+
+    #features,
+    #about,
+    #contact {
+        padding: 60px 20px;
     }
 
     .feature-container {
@@ -202,5 +245,4 @@ footer {
     #about p {
         width: 100%;
     }
-
 }
